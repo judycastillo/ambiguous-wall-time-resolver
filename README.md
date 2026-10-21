@@ -27,3 +27,10 @@ The trade-off: we work with **fixed offsets only**. There is no timezone databas
 
 - `resolve(dt, offset_a, offset_b) -> list[ResolveResult]` — resolves *dt* under two candidate UTC offsets.
 - `ResolveResult` — frozen dataclass with `utc: datetime`, `offset: timedelta`, `fold: int`, `label: str` (`"first"` = earlier UTC, `"second"` = later UTC).
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
