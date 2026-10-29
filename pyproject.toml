@@ -1,6 +1,6 @@
 [project]
 name = "ambiguous-wall-time-resolver"
-version = "0.1.0"
+version = "0.1.1"
 description = "Identifies ambiguous datetimes during DST fall-back transitions and resolves all possible UTC offsets."
 requires-python = ">=3.10"
 dependencies = []
